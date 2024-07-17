@@ -68,6 +68,8 @@ Put the following variable into _/etc/freeswitch/vars.xml_:
 <X-PRE-PROCESS cmd="set" data="conference_mapper_jigasi_uri=https://domain/path?pin={pin}"/>
 ```
 
+Update `conference_mapper_jigasi_uri` according to your conference mapper URI.
+
 ### Restart
 
 Restart the service:
