@@ -1,0 +1,9 @@
+<!-- put this file into /etc/freeswitch/dialplan/public/ -->
+
+<include>
+  <extension name="public_jigasi">
+    <condition field="destination_number" expression="^(jigasi)$">
+      <action application="python" data="nordeck.jigasi"/>
+    </condition>
+  </extension>
+</include>

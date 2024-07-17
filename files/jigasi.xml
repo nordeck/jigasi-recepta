@@ -1,0 +1,14 @@
+<!-- put this file inside /etc/freeswitch/directory/default/ -->
+
+<include>
+  <user id="jigasi">
+    <params>
+      <param name="password" value="jigasiPassword"/>
+      <param name="expire-seconds" value="60"/>
+    </params>
+    <variables>
+      <variable name="toll_allow" value="local"/>
+      <variable name="user_context" value="default"/>
+    </variables>
+  </user>
+</include>
