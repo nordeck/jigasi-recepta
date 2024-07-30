@@ -28,7 +28,7 @@ Restart FreeSwitch
 import freeswitch
 import requests
 
-PIN_MAX_LENGTH = 9
+PIN_MAX_LENGTH = 10
 ALLOWED_ATTEMPTS = 3
 REQUESTS_TIMEOUT = 10
 PIN_INPUT_TIMEOUT = 20
