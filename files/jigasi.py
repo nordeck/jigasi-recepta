@@ -13,13 +13,14 @@ Create /usr/local/lib/python3.11/dist-packages/nordeck/__init__.py
 
 Add /etc/freeswitch/directory/default/jigasi.xml
 
-Add /etc/freeswitch/dialplan/public/98_public_jigasi_dialplan.xml
-
 Add /etc/freeswitch/dialplan/default/99_default_jigasi_dialplan.xml
 
-Add Jigasi's conference mapper URI in /etc/freeswitch/vars.xml
+Add /etc/freeswitch/dialplan/public/98_public_jigasi_dialplan.xml
 
-  <X-PRE-PROCESS cmd="set" data="conference_mapper_jigasi_uri=https://domain/path?pin={pin}"/>
+Update Jigasi's conference mapper URI in 98_public_jigasi_dialplan.xml according
+to your environment:
+
+  <action application="set" data="conference_mapper_uri=https://domain/path?pin={pin}"/>
 
 Restart FreeSwitch
   systemctl restart freeswitch.service

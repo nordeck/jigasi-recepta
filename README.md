@@ -60,15 +60,15 @@ wget https://raw.githubusercontent.com/nordeck/jigasi-recepta/main/files/jigasi.
 
 Update `jigasiPassword` in this file according to your settings.
 
-### Global variables
+### Variables
 
-Put the following variable into _/etc/freeswitch/vars.xml_:
+Update `conference_mapper_uri` according to your conference mapper URI in
+`/etc/freeswitch/dialplan/public/98_public_jigasi_dialplan.xml`:
 
 ```xml
-<X-PRE-PROCESS cmd="set" data="conference_mapper_jigasi_uri=https://domain/path?pin={pin}"/>
+  <action application="set" data="conference_mapper_uri=https://domain/path?pin={pin}"/>
 ```
 
-Update `conference_mapper_jigasi_uri` according to your conference mapper URI.
 
 ### Restart
 
