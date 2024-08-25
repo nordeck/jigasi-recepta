@@ -47,7 +47,6 @@ def query_conference(uri, pin):
         return None
 
     try:
-        api = freeswitch.API()
         uri = uri.format(pin=pin)
         res = requests.get(uri, timeout=REQUESTS_TIMEOUT)
         jdata = res.json()
