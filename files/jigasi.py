@@ -36,7 +36,7 @@ PIN_INPUT_TIMEOUT = 20
 # pylint: disable=bare-except
 
 # ------------------------------------------------------------------------------
-def query_conference(pin):
+def query_conference(uri, pin):
     """
     Get the conference data from API service by using PIN.
     """
@@ -47,7 +47,6 @@ def query_conference(pin):
 
     try:
         api = freeswitch.API()
-        uri = api.executeString("global_getvar conference_mapper_jigasi_uri")
         uri = uri.format(pin=pin)
         res = requests.get(uri, timeout=REQUESTS_TIMEOUT)
         jdata = res.json()
@@ -69,6 +68,13 @@ def get_conference(session):
     """
 
     try:
+        # Get the conference mapper URI
+        uri = session.getVariable("conference_mapper_uri")
+        if not uri:
+            session.streamFile("misc/error.wav")
+            session.sleep(1000)
+            return {}
+
         # Ask for PIN
         session.streamFile("conference/conf-pin.wav")
 
@@ -79,7 +85,7 @@ def get_conference(session):
             freeswitch.consoleLog("debug", f"PIN NUMBER {i}: {pin}")
 
             # Completed if there is a valid reply from API service for this PIN
-            conference = query_conference(pin)
+            conference = query_conference(uri, pin)
             if conference:
                 return conference
 
